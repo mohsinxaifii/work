@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Mohd Mohsin — Full-stack developer in Dubai</title>
-  <meta name="description" content="Mohd Mohsin is a Shopify engineer who builds storefronts, the internal systems behind them, and the AI and automation that ties them together. 18 live sites, based in Dubai.">
-  <meta name="theme-color" content="#F3F2EC">
+  <title>Mohd Mohsin — Software engineer in Dubai</title>
+  <meta name="description" content="Mohd Mohsin is a software engineer in Dubai who builds AI agents, the systems behind a business, and the products on top of them. Dozens of websites shipped.">
+  <meta name="theme-color" content="#F4F4F0">
   <!-- Link previews (WhatsApp, LinkedIn, Slack, iMessage, X). Crawlers need
        absolute URLs; public/og.png is the hero's first frame at 1200x630 @2x. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Mohd Mohsin">
   <meta property="og:url" content="https://mohsinxaifii.github.io/work/">
-  <meta property="og:title" content="Mohd Mohsin — Full-stack developer & Shopify engineer">
-  <meta property="og:description" content="I build storefronts, the systems behind them, and the AI that ties it all together. 18 live sites, an 8x conversion lift, and ERPs and inventory systems built solo. In Dubai, can join immediately.">
+  <meta property="og:title" content="Mohd Mohsin — Software engineer · AI systems">
+  <meta property="og:description" content="I build AI agents, the systems behind a business, and the products on top. Dozens of websites shipped, an 8x conversion lift, and ERPs and inventory systems built solo. In Dubai, can join immediately.">
   <meta property="og:image" content="https://mohsinxaifii.github.io/work/og.png">
   <meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
-  <meta property="og:image:alt" content="The MOHSIN portfolio hero: I build storefronts, the systems behind them, and the AI that ties it all together.">
+  <meta property="og:image:alt" content="The Mohd Mohsin portfolio hero: I build software for growing businesses, the systems behind it, and the AI that ties it all together.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mohd Mohsin — Full-stack developer & Shopify engineer">
-  <meta name="twitter:description" content="Storefronts, the systems behind them, and the AI that ties it all together. 18 live sites, an 8x conversion lift, ERPs and inventory systems built solo.">
+  <meta name="twitter:title" content="Mohd Mohsin — Software engineer · AI systems">
+  <meta name="twitter:description" content="AI agents, the systems behind a business, and the products on top. Dozens of websites shipped, an 8x conversion lift, ERPs and inventory systems built solo.">
   <meta name="twitter:image" content="https://mohsinxaifii.github.io/work/og.png">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
 
@@ -27,6 +27,10 @@
   <script>
     (function () {
       var d = document.documentElement, t, m
+      // The intro plays from the top, so always start there.
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+      // The intro carries the header logo, so keep it hidden from the first paint.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('logo-handoff')
       try { t = JSON.parse(localStorage.getItem('theme')); m = JSON.parse(localStorage.getItem('mode')) } catch (e) {}
       d.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
       d.dataset.mode = m || 'chaos'
@@ -51,33 +55,36 @@
 </head>
 
 <body>
-  <!-- Loader -->
-  <div class="loader" data-loader aria-hidden="true">
-    <div class="loader__inner">
-      <span class="loader__count" data-loader-count>000</span>
-      <span class="loader__word">loading vibes</span>
-    </div>
-  </div>
+  <!-- Loader: the name compiles inside an editorial frame (loader.js). -->
+  <div class="loader" data-loader aria-hidden="true"></div>
 
   <a class="skip" href="#work">Skip to work</a>
 
   <!-- Nav -->
   <header class="nav" data-nav>
-    <a class="nav__logo" href="#top" aria-label="Back to top">mohsin<sup>®</sup></a>
+    <div class="nav__left">
+      <button class="nav__burger" data-menu-toggle type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#about" data-nav-link="about">About</a>
+        <a href="#ai" data-nav-link="ai">AI</a>
+        <a href="#work" data-nav-link="work">Work</a>
+        <a href="#experience" data-nav-link="experience">Experience</a>
+        <a href="#stack" data-nav-link="stack">Stack</a>
+        <a href="#cv" data-nav-link="cv">CV</a>
+        <a href="#contact" data-nav-link="contact">Contact</a>
+      </nav>
+    </div>
 
-    <nav class="nav__links" aria-label="Sections">
-      <a href="#about" data-nav-link="about">About</a>
-      <a href="#work" data-nav-link="work">Work</a>
-      <a href="#experience" data-nav-link="experience">Experience</a>
-      <a href="#stack" data-nav-link="stack">Stack</a>
-      <a href="#cv" data-nav-link="cv">CV</a>
-      <a href="#contact" data-nav-link="contact">Contact</a>
-    </nav>
+    <!-- The name in Arabic, as a liquid (wordmark.js). -->
+    <a class="nav__logo" href="#top" aria-label="Mohd Mohsin, back to top" data-wordmark>
+      <span class="nav__word" lang="ar" dir="rtl" aria-hidden="true">محسن</span>
+      <canvas class="nav__gl" data-wordmark-gl aria-hidden="true"></canvas>
+    </a>
 
     <div class="nav__controls">
-      <button class="mode" data-mode-toggle type="button" aria-label="Switch between recruiter mode and chaos mode">
-        <span class="mode__opt" data-opt="recruiter">Recruiter</span>
-        <span class="mode__opt" data-opt="chaos">Chaos</span>
+      <button class="mode" data-mode-toggle type="button" aria-label="Switch between simple and interactive mode">
+        <span class="mode__opt" data-opt="recruiter">Simple</span>
+        <span class="mode__opt" data-opt="chaos">Interactive</span>
         <span class="mode__thumb" aria-hidden="true"></span>
       </button>
       <button class="icon-btn" data-sound-toggle type="button" aria-label="Toggle sound">
@@ -86,12 +93,12 @@
       <button class="icon-btn icon-btn--theme" data-theme-toggle type="button" aria-label="Toggle dark mode">
         <span class="theme-dot" aria-hidden="true"></span>
       </button>
-      <button class="nav__burger" data-menu-toggle type="button" aria-expanded="false" aria-controls="menu">Menu</button>
     </div>
   </header>
 
   <div class="menu" id="menu" data-menu hidden>
     <a href="#about">About</a>
+    <a href="#ai">AI</a>
     <a href="#work">Work</a>
     <a href="#experience">Experience</a>
     <a href="#stack">Stack</a>
@@ -108,31 +115,10 @@
   <main id="top">
     <!-- 00 Hero -->
     <section class="hero" id="hero" data-section="hero">
-      <div class="container hero__top">
-        <p class="status"><span class="status__dot"></span><span data-status>In Dubai · can join immediately</span> · <span data-clock>Dubai</span></p>
-        <a class="label hero__scroll" href="#work">Scroll <span aria-hidden="true">↓</span></a>
-      </div>
-
-      <div class="hero__name" data-hero>
-        <h1 class="hero__h1">Mohsin</h1>
-        <canvas class="hero__gl" data-hero-gl aria-hidden="true"></canvas>
-        <p class="hero__hint toy label">↑ drag your cursor through the name. it's wet.</p>
-      </div>
-
-      <!-- Phones only: a slow reel of project screenshots fills the first
-           screen with real work. Tap one to open it (work.js fills it). -->
-      <div class="hero__reel" data-reel></div>
-
-      <div class="container hero__bottom">
-        <p class="hero__pitch" data-reveal>
-          I build <em>storefronts</em>, the systems behind them, and the <em>AI</em> that ties it all together.
-        </p>
-        <div class="hero__meta" data-reveal>
-          <div class="hero__ctas">
-            <a class="btn btn--ink" href="#work" data-cursor="scroll">See the work <span class="btn__arrow">↓</span></a>
-            <a class="btn btn--line" href="#cv" data-cursor="print">Get my CV</a>
-          </div>
-        </div>
+      <!-- The pitch and the portrait (pitch.js, copy in src/data/hero.js) -->
+      <div class="container hero__main">
+        <div class="hero__pitch" data-pitch></div>
+        <div class="hero__visual" data-visual></div>
       </div>
     </section>
 
@@ -144,21 +130,31 @@
     <!-- 01 About -->
     <section class="section about" id="about" data-section="about">
       <div class="container about__grid">
-        <figure class="about__photo" data-portrait data-cursor="boop">
-          <img src="/me.webp" alt="Mohd Mohsin in Dubai at night, the city lights behind him" width="559" height="559" loading="lazy" decoding="async">
-          <figcaption class="about__tag toy">that's me 👋</figcaption>
-        </figure>
-        <div class="about__copy">
+        <div class="about__intro">
           <p class="label">(01) About</p>
           <h2 class="h2" data-split>Hi, I'm <em>Mohsin</em>.</h2>
           <p class="about__lede" data-reveal data-about-lede></p>
+        </div>
+        <div class="about__copy">
           <div class="about__body" data-reveal data-about-body></div>
           <dl class="facts" data-reveal data-facts></dl>
         </div>
       </div>
     </section>
 
-    <!-- 02 Work -->
+    <!-- 02 AI: five animated diagrams (agent.js, labels in src/data/agent.js) -->
+    <section class="section agent" id="ai" data-section="ai">
+      <div class="container">
+        <header class="sec-head">
+          <p class="label">(02) AI</p>
+          <h2 class="h2" data-split>What AI does for <em>a business</em></h2>
+          <p class="sec-head__intro" data-reveal>I design and build these systems, end to end.</p>
+        </header>
+        <div class="ai-grid" data-ai-grid></div>
+      </div>
+    </section>
+
+    <!-- 03 Work -->
     <section class="section work" id="work" data-section="work">
       <!-- Shopify Partner badge: straddles the About/Work seam, drifts down
            and turns as the page scrolls (floaters.js). -->
@@ -166,16 +162,16 @@
         <svg class="partner__svg" data-partner viewBox="0 0 200 200" aria-hidden="true">
           <defs><path id="partner-circle" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs>
           <circle cx="100" cy="100" r="99" class="partner__bg"/>
-          <text class="partner__text"><textPath href="#partner-circle">shopify partner ✦ shopify is my superpower ✦ </textPath></text>
+          <text class="partner__text"><textPath href="#partner-circle">shopify partner ✦ software engineer ✦ </textPath></text>
           <circle cx="100" cy="100" r="50" class="partner__core"/>
           <path class="partner__logo" transform="translate(73 70) scale(2.25)" d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.629 0 2.295-1.44 3.760-3.406 3.760-2.354 0-3.540-1.465-3.540-1.465l.646-2.086s1.245 1.066 2.280 1.066c.675 0 .975-.545.975-.932 0-1.619-2.654-1.694-2.654-4.359-.034-2.237 1.571-4.416 4.827-4.416 1.257 0 1.875.361 1.875.361l-.945 2.715-.02.010zM11.170.830c.136 0 .271.038.405.135-.984.465-2.064 1.639-2.508 3.992-.656.213-1.293.405-1.889.578C7.697 3.750 8.951.840 11.170.840V.830zm1.235 2.949v.135c-.754.232-1.583.484-2.394.736.466-1.777 1.333-2.645 2.085-2.971.193.501.309 1.176.309 2.100zm.539-2.234c.694.074 1.141.867 1.429 1.755-.349.114-.735.231-1.158.366v-.252c0-.752-.096-1.371-.271-1.871v.002zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.210c-.423-1.233-1.176-2.370-2.508-2.370h-.115C12.135.209 11.669 0 11.265 0 8.159 0 6.675 3.877 6.210 5.846c-1.194.365-2.063.636-2.160.674-.675.213-.694.232-.772.870-.075.462-1.830 14.063-1.830 14.063L15.009 24l.927-21.166z"/>
         </svg>
       </div>
       <div class="container">
         <header class="sec-head">
-          <p class="label">(02) Selected work</p>
-          <h2 class="h2" data-split>Things I've <em>shipped</em></h2>
-          <p class="sec-head__intro" data-reveal>Shopify is my superpower. Eighteen live sites, each designed, built and delivered end to end: storefronts for food, wellness, fashion and jewellery first, then custom builds in React, Laravel and Webflow, including two for Dubai businesses.</p>
+          <p class="label">(03) Selected work</p>
+          <h2 class="h2" data-split>Projects I've <em>delivered</em></h2>
+          <p class="sec-head__intro" data-reveal>Dozens of websites, each designed, built and delivered end to end: storefronts for food, wellness, fashion and jewellery first, then custom builds in React, Laravel and Webflow, including two for Dubai businesses.</p>
         </header>
 
         <div class="featured" data-featured></div>
@@ -190,24 +186,24 @@
       </div>
     </section>
 
-    <!-- 03 Testimonials -->
+    <!-- 04 Testimonials -->
     <section class="section quotes" id="words" data-section="words">
       <div class="container">
         <header class="sec-head">
-          <p class="label">(03) Kind words</p>
-          <h2 class="h2" data-split>Don't take <em>my</em> word for it</h2>
+          <p class="label">(04) Testimonials</p>
+          <h2 class="h2" data-split>What clients <em>say</em></h2>
           <p class="sec-head__intro" data-reveal>From the founders I've built for and worked with, across storefronts, internal systems and full teams.</p>
         </header>
         <div class="quotes__grid" data-quotes></div>
       </div>
     </section>
 
-    <!-- 04 Experience -->
+    <!-- 05 Experience -->
     <section class="section experience" id="experience" data-section="experience">
       <div class="container">
         <header class="sec-head">
-          <p class="label">(04) Experience</p>
-          <h2 class="h2" data-split>Where I've <em>clocked in</em></h2>
+          <p class="label">(05) Experience</p>
+          <h2 class="h2" data-split>Where I've <em>worked</em></h2>
           <p class="sec-head__intro" data-reveal data-current></p>
         </header>
       </div>
@@ -219,13 +215,13 @@
       </div>
     </section>
 
-    <!-- 05 Stack -->
+    <!-- 06 Stack -->
     <section class="section stack" id="stack" data-section="stack">
       <div class="container">
         <header class="sec-head">
-          <p class="label">(05) Stack</p>
-          <h2 class="h2" data-split>The toolbox, but make it <em>bouncy</em></h2>
-          <p class="sec-head__intro" data-reveal>Commerce, code, AI, design, cloud and the numbers that prove it worked. Grab one. Throw it. Nobody's watching.</p>
+          <p class="label">(06) Stack</p>
+          <h2 class="h2" data-split>Skills and <em>tools</em></h2>
+          <p class="sec-head__intro" data-reveal>Software, AI, commerce, design, cloud and analytics. Point at a skill to read it, or grab one and throw it.</p>
         </header>
 
         <div class="pit-wrap toy">
@@ -243,16 +239,16 @@
       </div>
     </section>
 
-    <!-- 06 CV -->
+    <!-- 07 CV -->
     <section class="section cv" id="cv" data-section="cv">
       <div class="container cv__grid">
         <header class="cv__copy">
-          <p class="label">(06) Curriculum vitae</p>
-          <h2 class="h2" data-split>Take a <em>receipt</em></h2>
-          <p class="cv__lede" data-reveal>Everything on this page, compressed into one PDF your ATS will actually parse. Print it from the machine, tear it off, it's yours.</p>
+          <p class="label">(07) Curriculum vitae</p>
+          <h2 class="h2" data-split>Download my <em>CV</em></h2>
+          <p class="cv__lede" data-reveal>Everything on this page in one PDF, formatted for applicant tracking systems. Download it directly, or print a copy from the machine.</p>
           <div class="cv__ctas" data-reveal>
             <a class="btn btn--ink" href="#" data-cv-download>Download PDF <span class="btn__arrow">↓</span></a>
-            <a class="btn btn--line" href="#contact">Or just say hi</a>
+            <a class="btn btn--line" href="#contact">Get in touch</a>
           </div>
         </header>
 
@@ -272,7 +268,7 @@
       </div>
     </section>
 
-    <!-- 07 Contact -->
+    <!-- 08 Contact -->
     <section class="contact" id="contact" data-section="contact">
       <div class="marquee" data-marquee aria-hidden="true">
         <div class="marquee__row" data-marquee-row></div>
@@ -280,8 +276,8 @@
 
       <div class="container contact__inner">
         <div class="contact__lead">
-          <p class="label">(07) Contact</p>
-          <h2 class="contact__title" data-split>Got a store that should sell <em>more</em>? Let's talk.</h2>
+          <p class="label">(08) Contact</p>
+          <h2 class="contact__title" data-split>Hiring, or have a project in mind? <em>Let's talk.</em></h2>
           <!-- Email, WhatsApp, LinkedIn, GitHub, CV - built from site.js (toys.js) -->
           <ul class="dir" data-directory></ul>
         </div>
@@ -354,11 +350,11 @@
   <footer class="footer">
     <div class="bugs toy" data-bugs>
       <p class="label bugs__score">bugs fixed today: <b data-bug-score>0</b></p>
-      <p class="label bugs__hint">psst · type m-o-h-s-i-n anywhere</p>
+      <p class="label bugs__hint">Catch the bugs · a small game</p>
     </div>
     <div class="container footer__row">
       <p class="label">© <span data-year></span> Mohd Mohsin</p>
-      <p class="label footer__built">Built with GSAP, WebGL &amp; too much Coffee</p>
+      <p class="label footer__built">Designed and built by Mohd Mohsin</p>
       <a class="label" href="#top">Back to top ↑</a>
     </div>
   </footer>

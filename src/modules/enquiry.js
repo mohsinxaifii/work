@@ -150,7 +150,7 @@ export function initEnquiry() {
 
   function done(name) {
     play('success')
-    toast('sent ✦ talk soon')
+    toast('Message sent')
     form.classList.add('is-sent')
     form.innerHTML = `
       <div class="enquiry__head">

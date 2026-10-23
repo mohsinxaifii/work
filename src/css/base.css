@@ -10,29 +10,32 @@
    ================================================================== */
 
 :root {
-  --bg: #F3F2EC;
-  --bg-2: #E8E6DD;
-  --bg-3: #DEDBD0;
-  --ink: #0D0D0B;
-  --ink-2: #5B5A53;
-  --ink-3: #8C8A81;
-  --line: rgba(13, 13, 11, .12);
-  --line-strong: rgba(13, 13, 11, .28);
-  --paper: #FFFEF7;
+  /* An editor palette: neutral paper and ink, one deep "editor green"
+     accent, and supporting tones from a code theme (teal, keyword blue,
+     string yellow, control purple) for stickers and skills. The names
+     below are historical slots, not the colours they hold. */
+  --bg: #F4F4F0;
+  --bg-2: #E9E9E3;
+  --bg-3: #DCDCD4;
+  --ink: #1E1E1E;
+  --ink-2: #55575A;
+  --ink-3: #8A8C8E;
+  --line: rgba(30, 30, 30, .12);
+  --line-strong: rgba(30, 30, 30, .28);
+  --paper: #FFFFFF;
 
-  --accent: #D4FF3A;
-  --pink: #FF5FA2;
-  --blue: #3D5AFE;
-  --orange: #FF8A3D;
-  --violet: #B69CFF;
-  --on-accent: #0D0D0B;
-  /* Lime is unreadable as text on a light ground. Small accent text uses a
-     deep olive there; big accent words turn ink with a lime highlighter
-     stroke behind them. On dark grounds both stay plain lime. */
-  --accent-text: #4F6A00;          /* small accent text on the page */
-  --accent-on-ink: var(--accent);  /* accent text on an --ink ground */
-  --accent-word: var(--ink);       /* big accent words on the page */
-  --accent-mark: var(--accent);    /* their highlighter stroke */
+  --accent: #1F8A5B;
+  --pink: #2B9C9C;   /* teal */
+  --blue: #2F6DB5;   /* keyword blue */
+  --orange: #C9A227; /* string yellow */
+  --violet: #8A5CB8; /* control purple */
+  --on-accent: #FFFFFF;
+  /* The green reads as text on paper; small accent text runs a shade
+     deeper for contrast. */
+  --accent-text: #17704A;          /* small accent text on the page */
+  --accent-on-ink: #4EC98A;        /* accent text on an --ink ground */
+  --accent-word: var(--accent);    /* big accent words on the page */
+  --accent-mark: transparent;      /* (was a highlighter stroke) */
 
   --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -62,18 +65,20 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: #0D0D0B;
-  --bg-2: #181815;
-  --bg-3: #24241F;
-  --ink: #F1F0E8;
-  --ink-2: #A6A59C;
-  --ink-3: #6F6E66;
-  --line: rgba(241, 240, 232, .12);
-  --line-strong: rgba(241, 240, 232, .3);
-  --paper: #F6F4EA;
-  --accent-text: var(--accent);
-  --accent-on-ink: #4F6A00;
-  --accent-word: var(--accent);
+  /* Dark: editor-style greys. */
+  --bg: #1E1E1E;
+  --bg-2: #252526;
+  --bg-3: #2D2D30;
+  --ink: #D9DADB;
+  --ink-2: #A3A6A9;
+  --ink-3: #6E7175;
+  --line: rgba(217, 218, 219, .12);
+  --line-strong: rgba(217, 218, 219, .3);
+  --paper: #F4F4F0;
+  --accent: #3FB97A;
+  --accent-text: #4EC98A;
+  --accent-on-ink: #17704A;
+  --accent-word: #4EC98A;
   --accent-mark: transparent;
   color-scheme: dark;
 }
@@ -131,11 +136,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   color: var(--ink-2);
 }
 
+/* Accent words: same face, upright, picked out in the accent colour. */
 em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -.01em;
+  font-style: normal;
+  color: var(--accent-word);
 }
 
 .h2 {
@@ -145,7 +149,7 @@ em {
   letter-spacing: -.055em;
   text-wrap: balance;
 }
-.h2 em { font-size: 1.1em; letter-spacing: -.03em; line-height: .8; }
+.h2 em { letter-spacing: inherit; }
 
 .h3 {
   font-size: var(--fs-h3);
@@ -191,6 +195,9 @@ em {
 .btn--line { box-shadow: inset 0 0 0 1px var(--line-strong); }
 .btn--line:hover { background: var(--ink); color: var(--bg); box-shadow: inset 0 0 0 1px var(--ink); }
 .btn--accent { background: var(--accent); color: var(--on-accent); }
+.btn--wa { gap: 8px; background: #25D366; color: #062A12; }
+.btn--wa:hover { background: #1EBE5A; color: #062A12; }
+.btn--wa svg { width: 18px; height: 18px; flex: none; }
 .btn--accent:hover { background: var(--ink); color: var(--bg); }
 .btn__arrow { display: inline-block; transition: transform .35s var(--ease); }
 .btn:hover .btn__arrow { transform: translate(2px, 2px); }
@@ -212,10 +219,28 @@ em {
 .nav.is-hidden { transform: translateY(-100%); }
 .menu-open .nav { transform: none; background: var(--bg); box-shadow: none; }
 
-.nav__logo { font-weight: 600; font-size: 18px; letter-spacing: -.04em; justify-self: start; }
-.nav__logo sup { font-size: .5em; font-weight: 400; margin-left: 1px; }
+.nav__left { display: flex; align-items: center; justify-self: start; min-width: 0; }
+/* The wordmark: a small liquid canvas centred in the header. */
+.nav__logo { position: relative; display: grid; place-items: center; width: clamp(150px, 15vw, 230px); height: 54px; }
+.nav__word { font-family: 'Reem Kufi', var(--font-sans); font-weight: 700; }
+.nav__gl { position: absolute; inset: -6% 0; width: 100%; height: 112%; }
+.has-gl .nav__word { opacity: 0; }
+/* While the intro's name flies in to become the logo. */
+/* During the intro the logo steps out over the loader: the header sits
+   above it with everything but the logo hidden. */
+.nav > * { transition: opacity .4s; }
+.nav__logo.is-lifted, .logo-handoff .nav__logo { transition: none; }
+.logo-handoff .nav { z-index: 310; background: none; box-shadow: none; transform: none; }
+.logo-handoff .nav > :not(.nav__logo) { opacity: 0; }
+/* ...and the logo itself waits unseen until it's lifted into the intro. */
+.logo-handoff .nav__logo:not(.is-lifted) { opacity: 0; }
+.nav__logo.is-lifted { position: fixed; z-index: 1; }
+.nav__slot { display: block; }
+/* The no-WebGL fallback text scales with the box too. */
+.nav__logo { container-type: size; }
+.nav__word { font-size: 52cqh; }
 
-.nav__links { display: flex; gap: 4px; padding: 4px; border-radius: 999px; }
+.nav__links { display: flex; gap: 2px; margin-left: -12px; padding: 4px; border-radius: 999px; }
 .nav__links a {
   position: relative;
   font-size: 14px; padding: 6px 14px; border-radius: 999px;
@@ -282,14 +307,15 @@ em {
 .menu a { font-size: clamp(44px, 12vw, 80px); font-weight: 500; letter-spacing: -.05em; line-height: 1; }
 
 @media (max-width: 900px) {
-  .nav { grid-template-columns: 1fr auto; }
   .nav__links { display: none; }
+  .nav__logo { width: 128px; height: 42px; }
   .nav__burger { display: inline-block; }
   .mode { font-size: 11px; }
   .mode__opt { padding: 0 9px; }
 }
-@media (max-width: 420px) {
-  .icon-btn[data-sound-toggle] { display: none; }
+@media (max-width: 480px) {
+  /* Small phones: the wordmark needs the room. */
+  .icon-btn[data-sound-toggle], .mode { display: none; }
 }
 
 /* ---------- reveals ----------
@@ -298,9 +324,10 @@ em {
 .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0s); }
 .js [data-reveal].is-in { opacity: 1; transform: none; }
 
-.split-w { display: inline-block; overflow: clip; overflow-clip-margin: .12em; vertical-align: top; padding-bottom: .06em; margin-bottom: -.06em; }
+/* Room around each masked word for descenders and overhangs. */
+.split-w { display: inline-block; clip-path: inset(-.1em -1em 0); vertical-align: top; padding-bottom: .2em; margin-bottom: -.2em; }
 .split-w > span { display: inline-block; transition: transform 1.1s var(--ease); transition-delay: calc(var(--i) * 55ms); }
-.js [data-split]:not(.is-in) .split-w > span { transform: translateY(110%); }
+.js [data-split]:not(.is-in) .split-w > span { transform: translateY(140%); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; }

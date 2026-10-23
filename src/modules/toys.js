@@ -1,5 +1,5 @@
 /* ==================================================================
-   TOYS - the small stuff: static fills, local clock, copy-email,
+   TOYS - the small stuff: static fills, copy-email,
    the runaway "Hire me" button, velocity marquee, light-switch cord
    and the easter eggs: type "mohsin" (or tap the logo five times) for
    the tower game, the Konami code for gravity.
@@ -8,6 +8,7 @@
 import { gsap } from 'gsap'
 import { $, $$, esc, finePointer, isChaos, reducedMotion, whileVisible } from './utils.js'
 import { site } from '../data/site.js'
+import { waHref } from './whatsapp.js'
 import { play } from './sound.js'
 import { toast } from './toast.js'
 import { toggleTheme } from './prefs.js'
@@ -16,7 +17,6 @@ import { openTower } from './tower.js'
 
 export function initToys() {
   fillStatic()
-  initClock()
   initCopyEmail()
   initMarquee()
   initBadge()
@@ -26,27 +26,10 @@ export function initToys() {
 }
 
 function fillStatic() {
-  if (!finePointer) $('.hero__hint').textContent = "↑ swipe through the name. it's wet."
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear() })
   fillDirectory()
 }
 
-function initClock() {
-  const clock = $('[data-clock]')
-  const status = $('[data-status]')
-  const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: site.timezone, hour: '2-digit', minute: '2-digit' })
-  const hourFmt = new Intl.DateTimeFormat('en-GB', { timeZone: site.timezone, hour: 'numeric', hourCycle: 'h23' })
-  const update = () => {
-    const now = new Date()
-    clock.textContent = `${fmt.format(now)} ${site.tz}`
-    const h = Number(hourFmt.format(now))
-    // The status is the line recruiters scan for, so the late-night joke only
-    // shows in chaos mode.
-    status.textContent = h < 7 && isChaos() ? 'Probably asleep, still hireable' : site.status
-  }
-  update()
-  setInterval(update, 15000)
-}
 
 // One clipped box per letter, so the value can roll on hover.
 const roll = (text) => `<span class="dir__v" aria-label="${esc(text)}">${[...text].map((c, i) =>
@@ -58,14 +41,15 @@ function fillDirectory() {
   const handle = (url) => url.replace(/^https?:\/\/(www\.)?[^/]+\//, '').replace(/\/$/, '')
   const social = (label) => site.socials.find((x) => x.label === label)
   const rows = [
+    // WhatsApp leads: it's how people here actually get in touch.
+    { key: 'WhatsApp · fastest reply', value: site.phone, act: 'chat now ↗', attrs: `href="${esc(waHref)}" target="_blank" rel="noopener"`, cls: 'dir__item--wa' },
     { key: 'Email', value: site.email, act: 'copy', attrs: 'type="button" data-copy-email', tag: 'button' },
-    { key: 'WhatsApp', value: site.phone, act: 'chat ↗', attrs: `href="https://wa.me/${site.phone.replace(/\D/g, '')}" target="_blank" rel="noopener"` },
     ...['LinkedIn', 'GitHub'].map((l) => ({ key: l, value: handle(social(l).url), act: 'open ↗', attrs: `href="${esc(social(l).url)}" target="_blank" rel="noopener"` })),
     { key: 'CV', value: 'Download the PDF', act: 'pdf ↓', attrs: 'href="#" data-cv-download' },
   ]
   $('[data-directory]').innerHTML = rows.map((r) => {
     const tag = r.tag || 'a'
-    return `<li><${tag} class="dir__row" ${r.attrs}>
+    return `<li${r.cls ? ` class="${r.cls}"` : ''}><${tag} class="dir__row" ${r.attrs}>
       <span class="label dir__k">${r.key}</span>${roll(r.value)}<span class="label dir__act">${r.act}</span>
     </${tag}></li>`
   }).join('')
@@ -76,7 +60,7 @@ function initCopyEmail() {
     try {
       await navigator.clipboard.writeText(site.email)
       play('success')
-      toast('copied, bestie ✦')
+      toast('Email copied')
       const hint = $('[data-copy-email] .dir__act')
       hint.textContent = 'copied ✓'
       clearTimeout(hint.timer)
@@ -233,8 +217,8 @@ function initEasterEgg() {
     if (busy || !isChaos() || reducedMotion) return
     busy = true
     play('chaos')
-    toast('gravity.exe has stopped working', 3000)
-    const targets = $$('.h2, .card, .pass, .impact__line, .sticker, .hero__pitch, .hero__meta, .btn, .row, .skills__group, .printer, .contact__title, .email')
+    toast('Gravity off. Reload the page to restore it.', 3000)
+    const targets = $$('.h2, .card, .pass, .impact__line, .sticker, .hero__pitch, .hero__visual, .btn, .row, .skills__group, .printer, .contact__title, .email')
       .filter((el) => {
         const r = el.getBoundingClientRect()
         return r.bottom > 0 && r.top < innerHeight && r.width > 0

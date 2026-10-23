@@ -13,7 +13,7 @@ const root = document.documentElement
 export function setTheme(theme) {
   root.dataset.theme = theme
   store.set('theme', theme)
-  $('meta[name="theme-color"]').content = theme === 'dark' ? '#0D0D0B' : '#F3F2EC'
+  $('meta[name="theme-color"]').content = theme === 'dark' ? '#1E1E1E' : '#F4F4F0'
   dispatchEvent(new CustomEvent('themechange', { detail: theme }))
 }
 export const toggleTheme = () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark')
@@ -31,14 +31,14 @@ export function initPrefs() {
   $('[data-mode-toggle]').addEventListener('click', () => {
     const next = root.dataset.mode === 'chaos' ? 'recruiter' : 'chaos'
     setMode(next)
-    if (next === 'chaos') { play('chaos'); toast('chaos mode: on. touch everything ✦') }
-    else toast('recruiter mode: just the facts, no toys')
+    if (next === 'chaos') { play('chaos'); toast('Interactive mode on') }
+    else toast('Simple mode: content only')
   })
 
   $('[data-sound-toggle]').addEventListener('click', () => {
-    if (root.dataset.mode === 'recruiter') { toast('sound lives in chaos mode'); return }
+    if (root.dataset.mode === 'recruiter') { toast('Sound is available in interactive mode'); return }
     sound.set(!sound.on)
-    toast(sound.on ? 'sound on 🔊' : 'shh. sound off')
+    toast(sound.on ? 'Sound on' : 'Sound off')
   })
 
   $('[data-theme-toggle]').addEventListener('click', toggleTheme)

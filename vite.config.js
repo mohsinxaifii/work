@@ -9,14 +9,12 @@ const root = import.meta.dirname
    drift apart; the region's contact details live in src/data/site.js. */
 const india = [
   ['<html lang="en"', '<html lang="en" data-region="in"'],
-  ['Full-stack developer in Dubai', 'Full-stack developer in New Delhi'],
-  ['based in Dubai.', 'based in New Delhi.'],
+  ['Software engineer in Dubai', 'Software engineer in New Delhi'],
+  ['a software engineer in Dubai who', 'a software engineer in New Delhi who'],
   ['In Dubai, can join immediately.', 'Based in New Delhi, available for work.'],
   ['content="https://mohsinxaifii.github.io/work/">', 'content="https://mohsinxaifii.github.io/work/in/">'],
   ['<meta property="og:image" content="https://mohsinxaifii.github.io/work/og.png">', '<meta property="og:image" content="https://mohsinxaifii.github.io/work/og-in.png">'],
   ['<meta name="twitter:image" content="https://mohsinxaifii.github.io/work/og.png">', '<meta name="twitter:image" content="https://mohsinxaifii.github.io/work/og-in.png">'],
-  ['<span data-status>In Dubai · can join immediately</span>', '<span data-status>Available for work</span>'],
-  ['<span data-clock>Dubai</span>', '<span data-clock>New Delhi</span>'],
 ]
 
 function writeIndia() {

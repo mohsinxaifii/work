@@ -2,12 +2,12 @@
    EXPERIENCE - each job is a boarding pass, newest first, flying
    from its company code to the next job's. The last pass is an open seat
    ("YOU?") that doubles as the hire CTA. On desktop the row is pinned
-   and scrubbed sideways; on mobile it stacks.
+   and scrubbed sideways; tablets stack it, phones swipe it (rails.js).
    ================================================================== */
 
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { $, esc, barcode, reducedMotion } from './utils.js'
+import { $, esc, barcode } from './utils.js'
 import { experience, education } from '../data/cv.js'
 import { site } from '../data/site.js'
 import { play } from './sound.js'
@@ -123,41 +123,6 @@ export function initExperience() {
       },
     })
   })
-  // Phones: a sticky deck. Each pass pins a little lower than the one
-  // before; tall passes pin with their bottom on screen so nothing is
-  // hidden. The pass underneath shrinks and dims as the next one covers it.
-  mm.add('(max-width: 900px)', () => {
-    const cards = [...track.querySelectorAll('.pass')]
-    const topOf = (i) => Math.min(76 + i * 10, innerHeight - cards[i].offsetHeight - 16)
-    const place = () => cards.forEach((card, i) => { card.style.top = `${topOf(i)}px` })
-    place()
-    addEventListener('resize', place)
-    if (!reducedMotion) {
-      // Dim only while the next pass is actually sliding over this one:
-      // from when its top meets this pass's bottom edge until it pins.
-      // The dim is an overlay opacity (--dim), not a filter - filters on
-      // big sticky cards stutter on phones.
-      cards.slice(0, -1).forEach((card, i) => {
-        gsap.fromTo(card, { scale: 1, '--dim': 0 }, {
-          scale: 0.92,
-          '--dim': 0.5,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: cards[i + 1],
-            start: () => `top ${topOf(i) + card.offsetHeight}px`,
-            end: () => `top ${topOf(i + 1)}px`,
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-        })
-      })
-    }
-    return () => {
-      removeEventListener('resize', place)
-      cards.forEach((card) => { card.style.top = '' })
-    }
-  })
-
   // Fonts change pass widths; re-measure once they're in.
   document.fonts?.ready.then(() => ScrollTrigger.refresh())
 }

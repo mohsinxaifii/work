@@ -28,7 +28,8 @@ export function initCursor() {
   document.addEventListener('pointerover', (e) => {
     const t = e.target.closest?.('[data-cursor], a, button, .ball, .sticker, .receipt')
     el.classList.remove('is-link', 'is-label')
-    if (!t) return
+    // The wordmark answers with its own liquid; a disc on top would hide it.
+    if (!t || t.matches('[data-wordmark]')) return
     const word = t.dataset.cursor
       || (t.classList.contains('ball') ? 'yoink' : '')
       || (t.classList.contains('sticker') ? 'peel' : '')
@@ -42,7 +43,7 @@ export function initCursor() {
   })
 }
 
-/* Phones: a lime ring blooms wherever you tap (chaos mode only). */
+/* Phones: an accent ring blooms wherever you tap (chaos mode only). */
 function initTapRipple() {
   addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' || !isChaos()) return

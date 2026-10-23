@@ -134,7 +134,7 @@ export function openTower() {
   const screenY = (level) => BASE_Y - level * FLOOR + cam
 
   function drawFloor(x, y, w, perfect) {
-    ctx.fillStyle = perfect ? '#D4FF3A' : '#F1F0E8'
+    ctx.fillStyle = perfect ? '#3FB97A' : '#F1F0E8'
     ctx.fillRect(x, y, w, FLOOR - 2)
     // Windows, so it reads as a building rather than a bar.
     ctx.fillStyle = perfect ? 'rgba(13,13,11,.28)' : 'rgba(13,13,11,.18)'

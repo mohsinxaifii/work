@@ -65,8 +65,8 @@ export function initBugs() {
     score++
     scoreEl.textContent = score
     store.set('bugs', { day: today, n: score })
-    if (score === 10) toast('10 bugs fixed. that\'s a sprint ✦')
-    if (score === 50) toast('50?? go outside. (or hire me)')
+    if (score === 10) toast('10 bugs fixed')
+    if (score === 50) toast('50 bugs fixed. Impressive.')
 
     const splat = document.createElement('span')
     splat.className = 'splat'

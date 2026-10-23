@@ -30,7 +30,7 @@ export async function downloadCV() {
   a.click()
   a.remove()
   play('success')
-  toast('CV downloaded. ur welcome ✦')
+  toast('CV downloaded')
   return true
 }
 
@@ -41,13 +41,13 @@ function receiptHTML() {
   const line = (l, r, cls = '') => `<div class="receipt__line ${cls}"><span>${l}</span><span>${r}</span></div>`
   const rule = '<hr class="receipt__rule">'
   const items = [
-    ['Shopify engineering', '✓'],
+    ['Software engineering', '✓'],
     ['ERPs + inventory systems', '✓'],
     ['AI assistants', '✓'],
-    ['A shelf of live storefronts', '✓'],
+    ['Dozens of live websites', '✓'],
     ['Conversion lifts', '✓'],
     ['Commerce, end to end', '✓'],
-    ['Coffee, unlimited', '✓'],
+    ['Clear communication', '✓'],
   ]
   return `
     <div class="receipt__center">
@@ -62,12 +62,12 @@ function receiptHTML() {
     ${rule}
     ${items.map(([l, r]) => line(l, r)).join('')}
     ${rule}
-    ${line('Subtotal', 'Priceless')}
-    ${line('Vibe tax', '0%')}
-    ${line('Total', '1 hire', 'receipt__total')}
+    ${line('Availability', 'Immediate')}
+    ${line('Location', site.city)}
+    ${line('Total', '1 strong hire', 'receipt__total')}
     ${rule}
     <div class="receipt__center">
-      <p>Thank you for scrolling</p>
+      <p>Thank you for visiting</p>
       <p class="ar receipt__ar" lang="ar" dir="rtl">شكراً لزيارتكم</p>
       <p>Please come again</p>
     </div>
@@ -116,7 +116,7 @@ export function initPrinter() {
         btn.textContent = 'Reprint'
         led.classList.remove('is-on')
         play('success')
-        toast('now tear it off ↓')
+        toast('Drag the receipt down to tear it off')
       },
     })
   }

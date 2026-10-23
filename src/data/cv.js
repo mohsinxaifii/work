@@ -5,7 +5,7 @@
    ================================================================== */
 
 export const summary =
-  "Full-stack developer trusted with end-to-end ownership of a business's " +
+  "Software engineer trusted with end-to-end ownership of a business's " +
   'digital operation. The customer-facing storefront, the internal systems ' +
   'behind it, and the AI and automation layer that connects them.'
 
@@ -15,7 +15,7 @@ export const about = [
     'development, AI chat assistants, sales analytics and workflow automation.',
   'Previously led a cross-functional development and design team while owning ' +
     'client relationships directly. 3+ years shipping systems that move commercial ' +
-    'numbers: an 8x conversion-rate increase on a storefront rebuilt from scratch, ' +
+    'numbers: conversion rates up to 8x higher on storefronts rebuilt from scratch, ' +
     'internal ERPs delivered solo, and manual operations replaced by automation.',
 ]
 

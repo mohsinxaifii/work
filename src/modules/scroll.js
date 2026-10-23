@@ -43,7 +43,8 @@ export function initScroll() {
 export const stopScroll = () => lenis?.stop()
 export const startScroll = () => lenis?.start()
 
-/* Split headlines into masked words. Elements (like <em>) stay whole. */
+/* Split headlines into masked words. An accent (<em>) is split too, each
+   word keeping its <em>, so long accents wrap like the rest. */
 export function splitHeadings() {
   $$('[data-split]').forEach((el) => {
     let i = 0
@@ -54,6 +55,11 @@ export function splitHeadings() {
         node.textContent.split(/(\s+)/).forEach((part) => {
           if (!part) return
           out.push(/^\s+$/.test(part) ? ' ' : wrap(part))
+        })
+      } else if (node.nodeName === 'EM') {
+        node.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return
+          out.push(/^\s+$/.test(part) ? ' ' : wrap(`<em>${part}</em>`))
         })
       } else {
         out.push(wrap(node.outerHTML))

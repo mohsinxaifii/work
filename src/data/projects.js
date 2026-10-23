@@ -117,7 +117,7 @@ export const projects = [
     thumbAlt: 'The Kachori Story illustration: "From the heart of the streets to your table", a row of people sharing kachoris, chai and samosas',
     logo: null,
     description:
-      'A franchise-ready brand site for a Gurugram street-food chain, built '
+      'A franchise-ready brand site for a street-food chain, built '
       + 'in React to work as both a menu and a lead-generation channel.',
     background:
       'The Kachori Story is growing through franchising, so the site had two '
@@ -280,7 +280,7 @@ export const projects = [
     thumbAlt: 'Beyond Beyond - clean clinical skincare, About hero',
     logo: null,
     description:
-      'The launch store for India’s first NAD+ skincare line: a clinical, '
+      'The launch store for a first-of-its-kind NAD+ skincare line: a clinical, '
       + 'concern-led Shopify build that sells a new ingredient to people who '
       + 'have never heard of it.',
     background:
@@ -340,7 +340,7 @@ export const projects = [
     logo: null,
     description:
       'A conversion-focused Webflow site for an e-commerce design agency '
-      + 'serving clients in India, Germany and the USA.',
+      + 'serving clients across Europe, the USA and Asia.',
     background:
       'Twisty sells product personalisation, visualisation and performance '
       + 'creative to e-commerce brands. An agency that promises to make '
@@ -424,7 +424,7 @@ export const projects = [
     stack: SHOPIFY,
     url: 'https://ocherstudio.in',
     ...shots('ocher-studio'),
-    thumbAlt: 'Ocher Studio - Made to live with, handcrafted Indian décor',
+    thumbAlt: 'Ocher Studio - Made to live with, handcrafted décor',
     logo: null,
     description:
       'One Shopify store serving two markets: retail shoppers furnishing '
@@ -458,7 +458,7 @@ export const projects = [
     thumbAlt: 'Amino Forge - AF 9 advance liposomal amino supplement',
     logo: null,
     description:
-      'A science-led D2C store for AF 9, positioned as India’s first '
+      'A science-led D2C store for AF 9, positioned as a first-of-its-kind '
       + 'liposomal amino supplement. Research, design and Shopify build.',
     background:
       'Amino Forge launched with a single hero product and a complex '
