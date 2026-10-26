@@ -65,12 +65,10 @@
     <div class="nav__left">
       <button class="nav__burger" data-menu-toggle type="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav__links" aria-label="Sections">
-        <a href="#about" data-nav-link="about">About</a>
-        <a href="#ai" data-nav-link="ai">AI</a>
         <a href="#work" data-nav-link="work">Work</a>
-        <a href="#experience" data-nav-link="experience">Experience</a>
-        <a href="#stack" data-nav-link="stack">Stack</a>
-        <a href="#cv" data-nav-link="cv">CV</a>
+        <a href="#words" data-nav-link="words">Words</a>
+        <a href="#skills" data-nav-link="skills">Skills</a>
+        <a href="#about" data-nav-link="about">About</a>
         <a href="#contact" data-nav-link="contact">Contact</a>
       </nav>
     </div>
@@ -97,12 +95,10 @@
   </header>
 
   <div class="menu" id="menu" data-menu hidden>
-    <a href="#about">About</a>
-    <a href="#ai">AI</a>
     <a href="#work">Work</a>
-    <a href="#experience">Experience</a>
-    <a href="#stack">Stack</a>
-    <a href="#cv">CV</a>
+    <a href="#words">Words</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -115,49 +111,24 @@
   <main id="top">
     <!-- 00 Hero -->
     <section class="hero" id="hero" data-section="hero">
-      <!-- The pitch and the portrait (pitch.js, copy in src/data/hero.js) -->
+      <!-- The collage: small live interfaces around the headline you can
+           pick up and throw; they scatter on scroll (pitch.js, copy in src/data/hero.js) -->
+      <div class="hero__stage" data-visual aria-hidden="true"></div>
       <div class="container hero__main">
         <div class="hero__pitch" data-pitch></div>
-        <div class="hero__visual" data-visual></div>
       </div>
+      <div class="hero__foot" data-hero-foot></div>
     </section>
 
-    <!-- Impact -->
+    <!-- Proof band: four numbers that count up (counters.js, figures in src/data/site.js) -->
     <section class="impact" id="impact" data-section="impact">
       <div class="container" data-counters></div>
     </section>
 
-    <!-- 01 About -->
-    <section class="section about" id="about" data-section="about">
-      <div class="container about__grid">
-        <div class="about__intro">
-          <p class="label">(01) About</p>
-          <h2 class="h2" data-split>Hi, I'm <em>Mohsin</em>.</h2>
-          <p class="about__lede" data-reveal data-about-lede></p>
-        </div>
-        <div class="about__copy">
-          <div class="about__body" data-reveal data-about-body></div>
-          <dl class="facts" data-reveal data-facts></dl>
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 AI: five animated diagrams (agent.js, labels in src/data/agent.js) -->
-    <section class="section agent" id="ai" data-section="ai">
-      <div class="container">
-        <header class="sec-head">
-          <p class="label">(02) AI</p>
-          <h2 class="h2" data-split>What AI does for <em>a business</em></h2>
-          <p class="sec-head__intro" data-reveal>I design and build these systems, end to end.</p>
-        </header>
-        <div class="ai-grid" data-ai-grid></div>
-      </div>
-    </section>
-
-    <!-- 03 Work -->
+    <!-- 01 Work -->
     <section class="section work" id="work" data-section="work">
-      <!-- Shopify Partner badge: straddles the About/Work seam, drifts down
-           and turns as the page scrolls (floaters.js). -->
+      <!-- Shopify Partner badge: straddles the proof band/Work seam, drifts
+           down and turns as the page scrolls (floaters.js). -->
       <div class="partner" role="img" aria-label="Shopify Partner">
         <svg class="partner__svg" data-partner viewBox="0 0 200 200" aria-hidden="true">
           <defs><path id="partner-circle" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs>
@@ -169,9 +140,9 @@
       </div>
       <div class="container">
         <header class="sec-head">
-          <p class="label">(03) Selected work</p>
+          <p class="label">(01) Selected work</p>
           <h2 class="h2" data-split>Projects I've <em>delivered</em></h2>
-          <p class="sec-head__intro" data-reveal>Dozens of websites, each designed, built and delivered end to end: storefronts for food, wellness, fashion and jewellery first, then custom builds in React, Laravel and Webflow, including two for Dubai businesses.</p>
+          <p class="sec-head__intro" data-reveal>Each one designed, built and shipped end to end.</p>
         </header>
 
         <div class="featured" data-featured></div>
@@ -186,89 +157,88 @@
       </div>
     </section>
 
-    <!-- 04 Testimonials -->
+    <!-- 02 Words: one founder at a time, right after the work (testimonials.js) -->
     <section class="section quotes" id="words" data-section="words">
       <div class="container">
-        <header class="sec-head">
-          <p class="label">(04) Testimonials</p>
-          <h2 class="h2" data-split>What clients <em>say</em></h2>
-          <p class="sec-head__intro" data-reveal>From the founders I've built for and worked with, across storefronts, internal systems and full teams.</p>
-        </header>
-        <div class="quotes__grid" data-quotes></div>
+        <p class="label">(02) In their words</p>
+        <div class="spot" data-quotes></div>
       </div>
     </section>
 
-    <!-- 05 Experience -->
-    <section class="section experience" id="experience" data-section="experience">
+    <!-- 03 What I bring: AI diagrams (agent.js) and the skills pit (stack.js) -->
+    <section class="section agent" id="skills" data-section="skills">
       <div class="container">
         <header class="sec-head">
-          <p class="label">(05) Experience</p>
-          <h2 class="h2" data-split>Where I've <em>worked</em></h2>
-          <p class="sec-head__intro" data-reveal data-current></p>
+          <p class="label">(03) What I bring</p>
+          <h2 class="h2" data-split>Software with <em>AI</em> built in</h2>
+          <p class="sec-head__intro" data-reveal>I design and build these systems, end to end.</p>
+        </header>
+        <div class="ai-grid" data-ai-grid></div>
+
+        <div class="toolbox">
+          <div class="toolbox__head">
+            <h3 class="h3">The <em>toolbox</em></h3>
+            <p class="label">Grab a skill and throw it</p>
+          </div>
+          <div class="pit-wrap toy">
+            <div class="pit__legend" data-pit-legend role="group" aria-label="Highlight a skill category"></div>
+            <div class="pit" data-pit>
+              <div class="pit__ui">
+                <span class="label" data-pit-count></span>
+                <button class="btn btn--sm btn--line" type="button" data-pit-shake>Shake it</button>
+              </div>
+              <p class="pit__caption" data-pit-caption aria-live="polite"></p>
+            </div>
+          </div>
+          <!-- The full list: shown in simple mode, read out to screen readers in interactive mode. -->
+          <div class="skills" data-skills></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 About: who, then the trip so far (experience.js), then the CV to take home -->
+    <section class="section experience" id="about" data-section="about">
+      <div class="container">
+        <header class="sec-head">
+          <p class="label">(04) About</p>
+          <h2 class="h2" data-split>Hi, I'm <em>Mohsin</em>.</h2>
+          <div class="sec-head__intro" data-reveal>
+            <p data-current></p>
+            <dl class="facts" data-facts></dl>
+          </div>
         </header>
       </div>
       <div class="exp__pin" data-exp-pin>
         <div class="exp__track" data-exp-track></div>
       </div>
-      <div class="container">
+      <div class="container trip-end">
         <div class="layovers" data-education></div>
-      </div>
-    </section>
 
-    <!-- 06 Stack -->
-    <section class="section stack" id="stack" data-section="stack">
-      <div class="container">
-        <header class="sec-head">
-          <p class="label">(06) Stack</p>
-          <h2 class="h2" data-split>Skills and <em>tools</em></h2>
-          <p class="sec-head__intro" data-reveal>Software, AI, commerce, design, cloud and analytics. Point at a skill to read it, or grab one and throw it.</p>
-        </header>
-
-        <div class="pit-wrap toy">
-          <div class="pit__legend" data-pit-legend role="group" aria-label="Highlight a skill category"></div>
-          <div class="pit" data-pit>
-            <div class="pit__ui">
-              <span class="label" data-pit-count></span>
-              <button class="btn btn--sm btn--line" type="button" data-pit-shake>Shake it</button>
+        <div class="cv" id="cv">
+          <div class="cv__copy">
+            <h3 class="h3">The whole trip, <em>on paper</em></h3>
+            <div class="cv__ctas">
+              <a class="btn btn--ink" href="#" data-cv-download>Download PDF <span class="btn__arrow">↓</span></a>
             </div>
-            <p class="pit__caption" data-pit-caption aria-live="polite"></p>
           </div>
-        </div>
-
-        <div class="skills" data-skills></div>
-      </div>
-    </section>
-
-    <!-- 07 CV -->
-    <section class="section cv" id="cv" data-section="cv">
-      <div class="container cv__grid">
-        <header class="cv__copy">
-          <p class="label">(07) Curriculum vitae</p>
-          <h2 class="h2" data-split>Download my <em>CV</em></h2>
-          <p class="cv__lede" data-reveal>Everything on this page in one PDF, formatted for applicant tracking systems. Download it directly, or print a copy from the machine.</p>
-          <div class="cv__ctas" data-reveal>
-            <a class="btn btn--ink" href="#" data-cv-download>Download PDF <span class="btn__arrow">↓</span></a>
-            <a class="btn btn--line" href="#contact">Get in touch</a>
-          </div>
-        </header>
-
-        <div class="printer-stage">
-          <div class="printer" data-printer>
-            <div class="printer__body">
-              <span class="printer__brand">MOH-80 thermal</span>
-              <span class="printer__led" data-printer-led></span>
-              <button class="printer__btn" type="button" data-print data-cursor="print">Print CV</button>
-            </div>
-            <div class="printer__slot"></div>
-            <div class="printer__paper" data-paper>
-              <div class="receipt" data-receipt></div>
+          <div class="printer-stage">
+            <div class="printer" data-printer>
+              <div class="printer__body">
+                <span class="printer__brand">MOH-80 thermal</span>
+                <span class="printer__led" data-printer-led></span>
+                <button class="printer__btn" type="button" data-print data-cursor="print">Print CV</button>
+              </div>
+              <div class="printer__slot"></div>
+              <div class="printer__paper" data-paper>
+                <div class="receipt" data-receipt></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 08 Contact -->
+    <!-- 05 Contact -->
     <section class="contact" id="contact" data-section="contact">
       <div class="marquee" data-marquee aria-hidden="true">
         <div class="marquee__row" data-marquee-row></div>
@@ -276,7 +246,7 @@
 
       <div class="container contact__inner">
         <div class="contact__lead">
-          <p class="label">(08) Contact</p>
+          <p class="label">(05) Contact</p>
           <h2 class="contact__title" data-split>Hiring, or have a project in mind? <em>Let's talk.</em></h2>
           <!-- Email, WhatsApp, LinkedIn, GitHub, CV - built from site.js (toys.js) -->
           <ul class="dir" data-directory></ul>

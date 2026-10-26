@@ -62,21 +62,23 @@ export const site = {
   },
 }
 
-/* Impact line: the proof as one sentence instead of a row of stats.
-   *Starred* words are the highlights. Every claim is one the CV supports. */
-export const impact =
-  'Websites rebuilt from the ground up until they *convert*. '
-  + '*Dozens* of live sites, designed, built and shipped. '
-  + 'Products run *end to end*, from first pixel to checkout. '
-  + 'And the *systems* behind them - ERPs, inventory, operations - built solo, from scratch.'
+/* Proof band: four short claims under the hero, set as large as the
+   headlines. *Starred* words take the accent. Words, not figures: each
+   one says what keeps happening, not a single result. */
+export const proof = [
+  { claim: 'Conversion, *multiplied*', label: 'Storefronts rebuilt until they sell, brand after brand' },
+  { claim: '*Dozens* of launches', label: 'Websites designed, built and shipped, then kept selling' },
+  { claim: 'Systems, built *solo*', label: 'ERPs, inventory and operations, from a blank page' },
+  { claim: 'AI on *every shift*', label: 'Assistants that answer, qualify leads and support customers' },
+]
 
 /* Draggable stickers. `at` is where each starts inside the section named
    by `in`: [x as % of the section width, y in px from its top]. Pixels
    for y keep them in the whitespace above each headline. */
 export const stickers = [
   { text: 'references on request', tone: 'ink', in: 'impact', at: [84, 18], rot: -6 },
-  { text: 'dozens of live sites', tone: 'pink', in: 'work', at: [48, 64], rot: 5 },
-  { text: '3+ years', tone: 'lime', in: 'experience', at: [58, 70], rot: -8 },
-  { text: 'Shopify Partner', tone: 'blue', in: 'stack', at: [76, 64], rot: 7 },
+  { text: 'dozens of live sites', tone: 'pink', in: 'work', at: [48, -18], rot: 5 },
+  { text: '3+ years', tone: 'lime', in: 'about', at: [58, -18], rot: -8 },
+  { text: 'Shopify Partner', tone: 'blue', in: 'skills', at: [76, -18], rot: 7 },
   { text: 'replies within a day', tone: 'pink', in: 'contact', at: [62, 150], rot: -5 },
 ]

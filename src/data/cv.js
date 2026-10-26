@@ -4,21 +4,6 @@
    "airport code" printed on each boarding pass in Experience.
    ================================================================== */
 
-export const summary =
-  "Software engineer trusted with end-to-end ownership of a business's " +
-  'digital operation. The customer-facing storefront, the internal systems ' +
-  'behind it, and the AI and automation layer that connects them.'
-
-export const about = [
-  'Most recently ran the entire technology function at a design and ' +
-    'production studio: every client account’s architecture, full project ' +
-    'development, AI chat assistants, sales analytics and workflow automation.',
-  'Previously led a cross-functional development and design team while owning ' +
-    'client relationships directly. 3+ years shipping systems that move commercial ' +
-    'numbers: conversion rates up to 8x higher on storefronts rebuilt from scratch, ' +
-    'internal ERPs delivered solo, and manual operations replaced by automation.',
-]
-
 export const experience = [
   {
     code: 'DDM',

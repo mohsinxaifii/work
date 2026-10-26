@@ -47,7 +47,7 @@
   --max: 1520px;
   --gutter: clamp(16px, 3.4vw, 56px);
   --gap: clamp(16px, 2vw, 32px);
-  --section: clamp(96px, 12vw, 192px);
+  --section: clamp(64px, 7vw, 112px);
   --nav-h: 64px;
 
   --fs-label: 12px;
@@ -126,6 +126,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* ---------- type ---------- */
 .container { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: var(--section); position: relative; }
+/* Back-to-back sections share the gap instead of stacking two full ones. */
+.section + .section { padding-top: calc(var(--section) / 2); }
 
 .label {
   font-family: var(--font-mono);
@@ -164,7 +166,7 @@ em {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--gap);
   row-gap: var(--s5);
-  margin-bottom: clamp(48px, 7vw, 112px);
+  margin-bottom: clamp(32px, 4vw, 64px);
   position: relative;
 }
 .sec-head .label { grid-column: 1 / -1; }

@@ -7,8 +7,8 @@
 
 import { $$, reducedMotion } from './utils.js'
 
-const RAILS = ['.featured', '.exp__track', '.quotes__grid', '.ai-grid']
-const RISE = '.ai-tile, .card, .row, .quote, .skills__group, .dir li, .layover'
+const RAILS = ['.featured', '.exp__track', '.ai-grid']
+const RISE = '.ai-tile, .card, .row, .stat, .skills__group, .dir li, .layover'
 
 function deck(rail) {
   const items = [...rail.children]

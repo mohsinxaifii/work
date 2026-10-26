@@ -218,7 +218,7 @@ function initEasterEgg() {
     busy = true
     play('chaos')
     toast('Gravity off. Reload the page to restore it.', 3000)
-    const targets = $$('.h2, .card, .pass, .impact__line, .sticker, .hero__pitch, .hero__visual, .btn, .row, .skills__group, .printer, .contact__title, .email')
+    const targets = $$('.h2, .card, .pass, .stat, .sticker, .hero__pitch, .hero__card, .btn, .row, .skills__group, .printer, .contact__title, .email')
       .filter((el) => {
         const r = el.getBoundingClientRect()
         return r.bottom > 0 && r.top < innerHeight && r.width > 0
