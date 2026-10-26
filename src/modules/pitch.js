@@ -240,9 +240,12 @@ export function initPitch() {
   if (reducedMotion) return () => {}
 
   // The headline's last word cycles; its box eases to each word's width.
+  // Scheduled on GSAP's clock, not setInterval: a background tab pauses the
+  // tweens but not timers, and queued swaps would stack words side by side.
   const swap = $('[data-swap]', pitch)
   let wi = 0
   const cycle = () => {
+    gsap.delayedCall(2.6, cycle)
     const em = swap.firstElementChild
     const next = document.createElement('em')
     next.textContent = hero.words[(wi = (wi + 1) % hero.words.length)]
@@ -299,6 +302,6 @@ export function initPitch() {
       .to(floats, { opacity: 1, scale: 1, y: 0, duration: 1.1, stagger: { each: 0.08, from: 'random' }, ease: 'back.out(1.6)' }, 0.3)
       .to('.hero__line-path', { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut' }, 0.9)
       .to(n, { v: hero.lift.value, duration: 1.4, ease: 'power2.out', onUpdate: () => { lift.textContent = Math.round(n.v) } }, 0.9)
-      .call(() => setInterval(cycle, 2600), null, 1.2)
+      .call(() => gsap.delayedCall(2.6, cycle), null, 1.2)
   }
 }
